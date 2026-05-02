@@ -1,9 +1,5 @@
 PyWavelets
-torch 
-tensorflow 
 scikit-learn
 pandas 
-matplotlib 
 numpy 
 scipy
-xgboost
