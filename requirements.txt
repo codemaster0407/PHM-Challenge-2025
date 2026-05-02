@@ -1,5 +1,5 @@
 PyWavelets
-scikit-learn==1.8.0
+scikit-learn
 pandas 
 numpy 
 scipy
