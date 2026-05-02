@@ -37,6 +37,7 @@ if __name__ == "__main__":
 
     loader = DataLoader(controller_path, sensor_path)
 
+    print(f'DATA LOADING START .....')
     for set_no in evalset_list:
         for cut_no in cut_list:
             print(f"  evalset_{set_no:02d} | Cut {cut_no:02d} ...", end=' ')
