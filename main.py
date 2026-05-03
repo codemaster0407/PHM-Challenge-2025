@@ -72,8 +72,8 @@ if __name__ == "__main__":
             pred = model_inference(feature_array, cut_no)
 
             results.append({
-                'cut_num': cut_no,
                 'set_num': f'evalset_{int(set_no):02d}',
+                'cut_num': cut_no,
                 'pred': pred
             })
 
