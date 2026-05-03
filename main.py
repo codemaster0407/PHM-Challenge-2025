@@ -25,9 +25,9 @@ if __name__ == "__main__":
     cut_list = list(range(2, 27))
     CTRL_DROP_COLS = ['timestamp']
 
-    output_path = '/work/result.csv'
-    controller_path = '/tcdata/Controller_Data'
-    sensor_path = '/tcdata/Sensor_Data'
+    output_path = 'work/result.csv'
+    controller_path = 'tcdata/Controller_Data'
+    sensor_path = 'tcdata/Sensor_Data'
 
     loader = DataLoader(controller_path, sensor_path)
 
@@ -68,8 +68,8 @@ if __name__ == "__main__":
                 row.pop(col, None)
 
             # ── Inference ────────────────────────────────────────────────
-            feature_array = pd.Series(row).to_numpy()
-            pred = model_inference(feature_array)
+            feature_array = pd.Series(row)
+            pred = model_inference(feature_array, cut_no)
 
             results.append({
                 'cut_num': cut_no,
