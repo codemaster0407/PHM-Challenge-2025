@@ -25,9 +25,9 @@ if __name__ == "__main__":
     cut_list = list(range(2, 27))
     CTRL_DROP_COLS = ['timestamp']
 
-    output_path = '/work/result.csv'
-    controller_path = '/tcdata/Controller_Data'
-    sensor_path = '/tcdata/Sensor_Data'
+    output_path = 'work/result.csv'
+    controller_path = 'tcdata/Controller_Data'
+    sensor_path = 'tcdata/Sensor_Data'
 
     loader = DataLoader(controller_path, sensor_path)
 
