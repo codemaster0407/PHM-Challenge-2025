@@ -45,6 +45,7 @@ A specialized ensemble strategy was implemented based on the tool's lifecycle (c
 *   **Elastic Net**: Generally worked best for early-stage wear (below **Cut 11**).
 *   **XGBoost**: Demonstrated superior performance for later stages (post **Cut 11**).
 
+![Cut-wise Error Analysis](cut_wise_error.png)
 ![Cut Wise Ensemble Strategy](Cut_Wise_Ensemble.png)
 
 ## 📂 Repository Structure
