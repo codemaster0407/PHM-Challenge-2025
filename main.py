@@ -84,4 +84,4 @@ if __name__ == "__main__":
     print(f'LOG : Inference output saved at {output_path}')
 
     if skipped:
-        print(f"Skipped cuts: {skipped}")
+        print(f"Skipped cuts: {skipped} (There may be error in data generation)")
