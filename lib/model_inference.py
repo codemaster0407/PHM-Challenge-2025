@@ -47,13 +47,9 @@ def model_inference(input_features: dict, cut_no):
     
     # 4. Predict
     if cut_no <= 11:
-        print(f'Used ELastic Net')
+        # print(f'Used ELastic Net')
         return enet.predict(X_scaled)[0]
     else:
-        print(f'Used XGBoost')
+        # print(f'Used XGBoost')
         return xgb.predict(X_scaled)[0]
-    # enet_pred = enet.predict(X_scaled)[0] 
-    # xgb_pred = xgb.predict(X_scaled)[0]
-
-    # pred = 0.467 * xgb_pred + 0.533 * enet_pred
-    # return float(pred)
+  

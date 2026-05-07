@@ -25,9 +25,9 @@ if __name__ == "__main__":
     cut_list = list(range(2, 27))
     CTRL_DROP_COLS = ['timestamp']
 
-    output_path = '/work/result.csv'
-    controller_path = '/tcdata/Controller_Data'
-    sensor_path = '/tcdata/Sensor_Data'
+    output_path = 'work/result.csv'
+    controller_path = 'tcdata/Controller_Data'
+    sensor_path = 'tcdata/Sensor_Data'
 
     loader = DataLoader(controller_path, sensor_path)
 
@@ -37,8 +37,6 @@ if __name__ == "__main__":
     print('DATA LOADING START .....')
     for set_no in evalset_list:
         for cut_no in cut_list:
-            print(f"  evalset_{set_no:02d} | Cut {cut_no:02d} ...", end=' ')
-
             sensor_df = loader.get_sensor_data(set_no, cut_no)
             ctrl_df   = loader.get_controller_data(set_no, cut_no)
 
@@ -50,7 +48,7 @@ if __name__ == "__main__":
             ctrl_df.drop(columns=variance_zero_cols, inplace=True)
             ctrl_df.drop(columns=CTRL_DROP_COLS, inplace=True)
 
-            row = {'cut_no': cut_no}  # must be first — scaler expects 316 features
+            row = {'cut_no': cut_no}
 
             # ── Sensor features ──────────────────────────────────────────
             for col in SENSOR_COLS:
@@ -63,13 +61,11 @@ if __name__ == "__main__":
             # ── Controller features ──────────────────────────────────────
             row.update(controller_features(ctrl_df))
 
-            # ── Drop known NaN feature columns ───────────────────────────
-            for col in nan_cols:
-                row.pop(col, None)
-
             # ── Inference ────────────────────────────────────────────────
             feature_array = pd.Series(row)
             pred = model_inference(feature_array, cut_no)
+            
+            # print(f'LOG : Prediction for evalset_{int(set_no):02d} cut_no {cut_no} is {pred}')
 
             results.append({
                 'set_num': f'evalset_{int(set_no):02d}',
@@ -77,7 +73,6 @@ if __name__ == "__main__":
                 'pred': pred
             })
 
-            print(f"✅  ({len(sensor_df):,} sensor rows) → pred={pred:.4f}")
 
     output_csv = pd.DataFrame(results)
     output_csv.to_csv(output_path, index=False)
