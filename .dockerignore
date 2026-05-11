@@ -1,0 +1,35 @@
+# --- Docker Metadata & Artifacts ---
+repositories
+*.tar
+*.zip
+
+# --- Version Control ---
+.git
+.gitignore
+.dockerignore
+
+# --- Python Junk ---
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.venv
+env/
+venv/
+.pytest_cache/
+
+# --- Notebooks & Documentation (Not needed for inference) ---
+*.ipynb
+*.md
+*.jpg
+*.png
+*.pdf
+
+# --- Local Data & Outputs (These should be mounted via volumes, not baked in) ---
+tcdata/
+work/
+features/
+
+# --- OS Junk ---
+.DS_Store
+Thumbs.db
